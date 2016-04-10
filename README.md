@@ -30,13 +30,15 @@ class VigilentSpec: QuickSpec {
 }
 ```
 
-By include the Pod "Vigilant" in your Podfile, you will see a message like this in your console:
+Simpley by include the Pod "Vigilant" in your Podfile, you will see a message like this in your console:
 
 ```
 Test Case '-[Vigilant_Tests.VigilentSpec This_test_will_pass]' started.
 2016-04-10 16:07:29.026 Vigilant_Example[20344:1112445] 
 
 Vigilent: Did not see any `expect`s in the test: 'This test will pass'
+
+Test Case '-[Vigilant_Tests.VigilentSpec This_test_will_pass]' passed (0.013 seconds).
 ```
 
 Making it easy to see what tests are running without any `expect`s being called.
@@ -49,12 +51,12 @@ also provides a way to do that. In your Testing AppDelegate, call the `Vigilent`
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, run `pod try Vigilant`.
 
 ## Installation
 
 Vigilant is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following line to your Podfile in a test target:
 
 ```ruby
 pod "Vigilant"

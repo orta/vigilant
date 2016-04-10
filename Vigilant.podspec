@@ -8,6 +8,10 @@ Pod::Spec.new do |s|
                         which "passes" because the expectations are not ran during the test.
                        DESC
 
+  s.ios.deployment_target = "7.0"
+  s.osx.deployment_target = "10.9"
+  s.tvos.deployment_target = '9.0'
+
   s.homepage         = "https://github.com/orta/vigilant"
   s.license          = 'MIT'
   s.author           = { "Orta Therox" => "orta.therox@gmail.com" }
