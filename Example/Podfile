@@ -8,6 +8,6 @@ end
 target 'Vigilant_Tests', :exclusive => true do
   pod 'Vigilant', :path => '../'
 
-  pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
+  pod 'Quick'
+  pod 'Nimble'
 end

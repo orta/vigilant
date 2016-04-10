@@ -1,49 +1,28 @@
-// https://github.com/Quick/Quick
-
 import Quick
 import Nimble
-import Vigilant
 
-class TableOfContentsSpec: QuickSpec {
+class VigilentSpec: QuickSpec {
     override func spec() {
-        describe("these will fail") {
+        describe("Vigilent's tiny test suite") {
 
-            it("can do maths") {
-                expect(1) == 2
-            }
+            describe("FAILS -") {
+                it("this should fail") { }
 
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
-                }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    dispatch_async(dispatch_get_main_queue()) {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        NSThread.sleepForTimeInterval(0.5)
-                        expect(time) == "done"
-
-                        done()
+                it("this also should fail") {
+                    let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                    dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                        expect(0) == 0
                     }
                 }
+            }
+
+            describe("FAILS - shouldn't be affected by nested beforeEach") {
+                beforeEach { }
+                it("fails") { }
+            }
+
+            it("This should pass though") {
+                expect("Tests") == "Tests"
             }
         }
     }

@@ -1,40 +1,20 @@
-#
-# Be sure to run `pod lib lint Vigilant.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "Vigilant"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of Vigilant."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+  s.version          = "1.0.0"
+  s.summary          = "Glues Quick & Nimble together. Makes sure you run an expectation on every test."
   s.description      = <<-DESC
+                        Be Quick, be Nimble, be Vigilent. Vigilent keeps track of whether any test
+                        runs it's expectations. This makes it easier to notice when you have async code
+                        which "passes" because the expectations are not ran during the test.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/Vigilant"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/orta/vigilant"
   s.license          = 'MIT'
   s.author           = { "Orta Therox" => "orta.therox@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/Vigilant.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
-
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'Vigilant' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source           = { :git => "https://github.com/orta/vigilant.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/orta'
+  s.source_files = 'Vigilent/Classes/**/*'
+  s.frameworks = 'Foundation', 'XCTest'
+  s.dependency 'Quick'
+  s.dependency 'Nimble'
 end
