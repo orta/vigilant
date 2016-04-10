@@ -30,7 +30,7 @@ class VigilentSpec: QuickSpec {
 }
 ```
 
-Simpley by include the Pod "Vigilant" in your Podfile, you will see a message like this in your console:
+Simply by including the Pod "Vigilant" in your Podfile, you will see a message like this in your console:
 
 ```
 Test Case '-[Vigilant_Tests.VigilentSpec This_test_will_pass]' started.
