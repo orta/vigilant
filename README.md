@@ -6,7 +6,7 @@ It's great that you can run both [Quick](https://github.com/quick/quick) and [Ni
 
 This Pod bridges Quick and Nimble, and creates a contract between the two. which enforces that you will use Nimble matchers inside every Quick test. 
 
-The code is short, well commented, but a little bit esoteric. You'd probably enjoy reading it.
+The code is short, well commented, but a little bit esoteric. You'd probably enjoy [reading it](https://github.com/orta/vigilant/blob/master/Vigilent/Classes/Vigilent.m).
 
 ## Examples
 
