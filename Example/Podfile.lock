@@ -1,7 +1,7 @@
 PODS:
   - Nimble (4.0.0)
   - Quick (0.9.1)
-  - Vigilant (0.1.0):
+  - Vigilant (1.0.0):
     - Nimble
     - Quick
 
@@ -12,11 +12,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Vigilant:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   Nimble: 72bcc3e2f02242e6bfaaf8d9412ca7bfe3d8b417
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
-  Vigilant: 801c3f0298b78477f104ca7503d52e6ab1114735
+  Vigilant: c7c27bfd207bc691a27fa1e74aff3b52687c0eb5
 
 COCOAPODS: 0.39.0

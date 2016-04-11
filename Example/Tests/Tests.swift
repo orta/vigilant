@@ -1,9 +1,9 @@
 import Quick
 import Nimble
 
-class VigilentSpec: QuickSpec {
+class VigilantSpec: QuickSpec {
     override func spec() {
-        describe("Vigilent's tiny test suite") {
+        describe("Vigilant's tiny test suite") {
 
             describe("FAILS -") {
                 it("this should fail") { }
