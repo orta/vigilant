@@ -6,7 +6,7 @@ It's great that you can run both [Quick](https://github.com/quick/quick) and [Ni
 
 This Pod bridges Quick and Nimble, and creates a contract between the two. which enforces that you will use Nimble matchers inside every Quick test. 
 
-The code is short, well commented, but a little bit esoteric. You'd probably enjoy [reading it](https://github.com/orta/vigilant/blob/master/Vigilent/Classes/Vigilent.m).
+The code is short, well commented, but a little bit esoteric. You'd probably enjoy [reading it](https://github.com/orta/vigilant/blob/master/Vigilant/Classes/Vigilant.m).
 
 ## Examples
 
@@ -16,7 +16,7 @@ Here's a test suite with two tests:
 import Quick
 import Nimble
 
-class VigilentSpec: QuickSpec {
+class VigilantSpec: QuickSpec {
     override func spec() {
 
         it("This test will pass") {
@@ -33,12 +33,12 @@ class VigilentSpec: QuickSpec {
 Simply by including the Pod "Vigilant" in your Podfile, you will see a message like this in your console:
 
 ```
-Test Case '-[Vigilant_Tests.VigilentSpec This_test_will_pass]' started.
+Test Case '-[Vigilant_Tests.VigilantSpec This_test_will_pass]' started.
 2016-04-10 16:07:29.026 Vigilant_Example[20344:1112445] 
 
-Vigilent: Did not see any `expect`s in the test: 'This test will pass'
+Vigilant: Did not see any `expect`s in the test: 'This test will pass'
 
-Test Case '-[Vigilant_Tests.VigilentSpec This_test_will_pass]' passed (0.013 seconds).
+Test Case '-[Vigilant_Tests.VigilantSpec This_test_will_pass]' passed (0.013 seconds).
 ```
 
 Making it easy to see what tests are running without any `expect`s being called.
@@ -46,7 +46,7 @@ Making it easy to see what tests are running without any `expect`s being called.
 ## Hard mode
 
 Maybe you want to go all out and enforce that every test have expectations, well, this Pod 
-also provides a way to do that. In your Testing AppDelegate, call the `Vigilent` class's function
+also provides a way to do that. In your Testing AppDelegate, call the `Vigilant` class's function
 `startExpecting` to cause assertions instead of logs.
 
 ## Usage

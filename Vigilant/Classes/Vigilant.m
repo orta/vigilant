@@ -3,16 +3,16 @@
 @import Nimble;
 @import ObjectiveC;
 
-#import "Vigilent.h"
+#import "Vigilant.h"
 
-static BOOL ORVigilentShouldAssert = false;
-static BOOL ORVigilentConfigurationHasRunExpectations;
+static BOOL ORVigilantShouldAssert = false;
+static BOOL ORVigilantConfigurationHasRunExpectations;
 
-@implementation Vigilent
+@implementation Vigilant
 
 + (void)startExpecting
 {
-    ORVigilentShouldAssert = true;
+    ORVigilantShouldAssert = true;
 }
 
 @end
@@ -20,10 +20,10 @@ static BOOL ORVigilentConfigurationHasRunExpectations;
 /// Creates an class which Quick will pick up to support
 /// adding beforeEach / afterEach blocks.
 
-@interface ORVigilentConfiguration: QuickConfiguration
+@interface ORVigilantConfiguration: QuickConfiguration
 @end
 
-@implementation ORVigilentConfiguration
+@implementation ORVigilantConfiguration
 
 + (void)configure:(Configuration *)configuration
 {
@@ -32,7 +32,7 @@ static BOOL ORVigilentConfigurationHasRunExpectations;
     NSMutableDictionary *threadDict = [NSThread currentThread].threadDictionary;
 
     /// We want to dynamically create a subclass of the dictionary for the current thread
-    Class orMutableDict = objc_allocateClassPair([threadDict class], "ORVigilentMutableDictionary", 0);
+    Class orMutableDict = objc_allocateClassPair([threadDict class], "ORVigilantMutableDictionary", 0);
 
     /// We do this, because every time a nimble matcher is ran
     /// it makes changes to the "NimbleEnvironment" key
@@ -40,7 +40,7 @@ static BOOL ORVigilentConfigurationHasRunExpectations;
 
     /// By doing this we can hook in to find out if any `expect`s have been ran.
     const char *types = method_getTypeEncoding(indexOfObject);
-    class_addMethod(orMutableDict, @selector(setObject:forKeyedSubscript:), (IMP)ORVigilentCustomSetObject, types);
+    class_addMethod(orMutableDict, @selector(setObject:forKeyedSubscript:), (IMP)ORVigilantCustomSetObject, types);
 
     /// So we register our new subclass in the objc runtime
     objc_registerClassPair(orMutableDict);
@@ -51,16 +51,16 @@ static BOOL ORVigilentConfigurationHasRunExpectations;
     // Before any tests are ran, make sure that we've set the check to false,
     //
     [configuration beforeEach:^{
-        ORVigilentConfigurationHasRunExpectations = NO;
+        ORVigilantConfigurationHasRunExpectations = NO;
     }];
 
     // We now look after a test to see if there were any changes to the
     // Nimble Environment during the test run.
     [configuration afterEachWithMetadata:^(ExampleMetadata * _Nonnull metadata) {
-        if (ORVigilentConfigurationHasRunExpectations == false) {
+        if (ORVigilantConfigurationHasRunExpectations == false) {
             NSString *expectationName = [metadata.example name];
-            NSString *errorString = [NSString stringWithFormat:@"Vigilent: Did not see any `expect`s in the test: '%@'", expectationName];
-            if (ORVigilentShouldAssert) {
+            NSString *errorString = [NSString stringWithFormat:@"Vigilant: Did not see any `expect`s in the test: '%@'", expectationName];
+            if (ORVigilantShouldAssert) {
                 @throw errorString;
             } else {
                 NSLog(@"\n\n%@\n\n", errorString);
@@ -69,7 +69,7 @@ static BOOL ORVigilentConfigurationHasRunExpectations;
     }];
 }
 
-static void ORVigilentCustomSetObject(NSMutableDictionary *self, SEL _cmd, id anObject, id<NSCopying>key)
+static void ORVigilantCustomSetObject(NSMutableDictionary *self, SEL _cmd, id anObject, id<NSCopying>key)
 {
     // We're overwriting setObject:forKeyedSubscript:
     // Which, hopefully, just calls setObject:forKey under the hood :)
@@ -77,7 +77,7 @@ static void ORVigilentCustomSetObject(NSMutableDictionary *self, SEL _cmd, id an
 
     // Check for whether the key was a change to the Nimble Environment
     if ([@"NimbleEnvironment" isEqual:key]) {
-        ORVigilentConfigurationHasRunExpectations = YES;
+        ORVigilantConfigurationHasRunExpectations = YES;
     }
 }
 
